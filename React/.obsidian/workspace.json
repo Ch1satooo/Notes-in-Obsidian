@@ -1,0 +1,171 @@
+{
+  "main": {
+    "id": "7176058277a8e31e",
+    "type": "split",
+    "children": [
+      {
+        "id": "ed3b53494fd2bc52",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "624985a9fa079ff7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Day1 -.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day1 -"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5ef2e045b98b2641",
+    "type": "split",
+    "children": [
+      {
+        "id": "71149f95e4da5d18",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cc86cae220553662",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "dd667f550a8bed2e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2c839086070aadcd",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "858b8bd87b658d67",
+    "type": "split",
+    "children": [
+      {
+        "id": "be6707c1b2dc8b0d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "badb44ba9c92820b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Day1 -.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Day1 -"
+            }
+          },
+          {
+            "id": "953a996039f4f5e6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Day1 -.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Day1 -"
+            }
+          },
+          {
+            "id": "0eecd6d526cbfdf1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "dd31edaf249dc4ce",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Day1 -.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Day1 -"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "624985a9fa079ff7",
+  "lastOpenFiles": [
+    "Untitled.md",
+    "Day1 -.md",
+    "create a link.md"
+  ]
+}
