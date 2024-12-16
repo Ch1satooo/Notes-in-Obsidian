@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/Project AOC/Backend.md",
+                "file": "Notes/Project AOC/Backend V1.0.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Backend"
+              "title": "Backend V1.0"
             }
           }
         ]
@@ -164,7 +164,7 @@
   },
   "active": "3121a6438bdda06c",
   "lastOpenFiles": [
-    "Notes/Project AOC/Backend.md",
+    "Notes/Project AOC/Backend V1.0.md",
     "Untitled",
     "Notes/Project AOC",
     "README.md"
