@@ -73,7 +73,10 @@ public void setSalary(double salary) {
 }
 ```
 ## `static` in Java
-Class includes **method**, **static method** directly belongs to whole class, it can be called by `className.methodName()`.
+Class includes **method**, **static method** directly belongs to whole class, it can be called by: 
+```java
+className.methodName()
+```
 **Non-static method** (instance method) corresponds specific **instance**, it can be called by: 
 ```java
 className instanceName = new className();
@@ -81,3 +84,50 @@ instanceNmae.methodName();
 ```
 Most of the time, we do not use static method, but for utility methods, using static methods are appropriate.
 ## 'Generics' in Java
+### Genetic classes: 
+Used when multiple methods share the same `<T>`.
+```java
+public class Printer<T, K>{
+	T content;
+	K secondContent;
+	// Constuctor
+	
+	public void print(){
+		System.out.println(content, secondContent);
+	}
+}
+```
+`<T>` allows the class to work with **different types**. It also can be extended using: 
+`<T extends className/interfaceName`.
+**Call**: 
+```java
+Printer<Integer> printer = new Printer<>(123);
+printer.print();
+```
+#### Generic methods: 
+Used when type flexibility is needed for one method.
+```java
+private static <T> void print(T content){
+	System.out.println(content);
+}
+```
+T here is a wildcard(data type). By **adding a `<T>` before return value type**, it tells Java that this is a generis type. Same way, `<T>` also can be extended using: 
+`<T extends className/interfaceName`.
+**Call**: 
+```java
+print("Anything");
+print(123);
+print(new Car());
+// etc.
+```
+## int and Integer
+In Java, `int` is a **primitive data type**, while `Integer` is a **wrapper class** for the `int` primitive type.
+- `Integer` is an **object**, which means it can be null. It allows to use additional methods like `Integer.parseInt()` and `Integer.toString()`.
+## About constructor
+A constructor is **unnecessary** when static methods or setters can handle initialization more flexibly, especially when creating objects with varying configurations or providing clearer intent for object creation.
+## Why Not Use `void` for POST Requests?
+- RESTful APIs recommend returning the resource's location or identifier after creation. It aligns with the HTTP standard for `POST`:
+	- **Client Sends**: Data for resource creation.
+	- **Server Responds**: Resource ID and `201 Created` status.
+- For Confirmation of Successful Processing.
+## Optional
