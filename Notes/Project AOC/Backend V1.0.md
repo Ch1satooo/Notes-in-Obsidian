@@ -83,7 +83,7 @@ className instanceName = new className();
 instanceNmae.methodName();
 ```
 Most of the time, we do not use static method, but for utility methods, using static methods are appropriate.
-## 'Generics' in Java
+## Generics in Java
 ### Genetic classes: 
 Used when multiple methods share the same `<T>`.
 ```java
@@ -120,10 +120,18 @@ print(123);
 print(new Car());
 // etc.
 ```
+If want use generics in method, must declare it in method header: 
+```java
+public <T> void example(){
+	Optional<T> optional = Optional.empty();
+	System.out.println(optional.isEmpty());
+}
+```
 ## int and Integer
 In Java, `int` is a **primitive data type**, while `Integer` is a **wrapper class** for the `int` primitive type.
 - `Integer` is an **object**, which means it can be null. It allows to use additional methods like `Integer.parseInt()` and `Integer.toString()`.
-## About constructor
+- `Integer` can be `null`.
+## About Constructor
 A constructor is **unnecessary** when static methods or setters can handle initialization more flexibly, especially when creating objects with varying configurations or providing clearer intent for object creation.
 ## Why Not Use `void` for POST Requests?
 - RESTful APIs recommend returning the resource's location or identifier after creation. It aligns with the HTTP standard for `POST`:
@@ -131,3 +139,22 @@ A constructor is **unnecessary** when static methods or setters can handle initi
 	- **Server Responds**: Resource ID and `201 Created` status.
 - For Confirmation of Successful Processing.
 ## Optional
+`Optional<T>` is a **container object** (`Opthinal<String/Object/...>`) that may or may not contain a non-null value. It’s used to **avoid null pointer exceptions**.
+It's a type class, just like **Integer**, which has other methods of it can be called.
+```java
+public Optional<User> findUserByName(String name, List<User> user) {
+	for(User user : user) {
+		if(user.getName().equals(name)) {
+			return Optional.of(user);
+		}
+	}
+	return Optional.empty();
+}
+```
+## How `findById` Works in a Repository?
+The `findById` method in a Spring Data JPA repository explicitly returns an `Optional<Celebrity>`. Then, must explicitly handle the `Optional` to retrieve the underlying `Celebrity` object  in service layer.
+==But==, other derived query methods return `List<Celebrity>` or `Celebrity` type.
+## `CollectionUtils.isEmpty` and `List.isEmpty`
+`CollectionUtils.isEmpty` (from Spring Framework) and `List.isEmpty` (a method of the Java `List` interface) both check if a collection is empty.
+- `CollectionUtils.isEmpty(collection)` returns a **boolean value**. When the collection is null, it returns true.
+- But, `List.isEmpty()` throws a `NullPointerException` if the collection is `null`.
