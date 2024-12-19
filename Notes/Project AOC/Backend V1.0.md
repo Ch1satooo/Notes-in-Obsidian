@@ -138,7 +138,7 @@ A constructor is **unnecessary** when static methods or setters can handle initi
 	- **Client Sends**: Data for resource creation.
 	- **Server Responds**: Resource ID and `201 Created` status.
 - For Confirmation of Successful Processing.
-## Optional
+## Optional in Java
 `Optional<T>` is a **container object** (`Opthinal<String/Object/...>`) that may or may not contain a non-null value. It’s used to **avoid null pointer exceptions**.
 It's a type class, just like **Integer**, which has other methods of it can be called.
 ```java
@@ -158,3 +158,18 @@ The `findById` method in a Spring Data JPA repository explicitly returns an `Opt
 `CollectionUtils.isEmpty` (from Spring Framework) and `List.isEmpty` (a method of the Java `List` interface) both check if a collection is empty.
 - `CollectionUtils.isEmpty(collection)` returns a **boolean value**. When the collection is null, it returns true.
 - But, `List.isEmpty()` throws a `NullPointerException` if the collection is `null`.
+## Different Types of Exception
+**Just some defferent names**, but you can find out more by names.
+Different exception types are not just about naming but about **communicating intent**, **categorizing errors**, and **enabling precise handling**. By choosing the appropriate exception, your code becomes easier to debug, maintain, and understand.
+## `equals` Method Used to Compare with two Instances
+**By Default:** The `equals` method in Java compares two objects based on their **memory addresses**. If the memory addresses are the same, it returns `true`.
+But, To compare two instances based on **logical equality** (e.g., whether their attributes are equal), you must **override** the `equals` method in the class.
+## Handle Date Date
+Frontend post **`String` type** date data to backend, then in the backend, we should convert it to `Date` type.
+In MySQL, when define a column with the `DATE` type, it **only stores the date portion** (`yyyy-MM-dd`). However, if your application interacts with the database using Java, might encounter a time component being added to the `Date` because of how the Java `java.util.Date` or `java.sql.Date` interacts with MySQL. Use `@Temporal(TemporalType.DATE)` in JPA can solve this: 
+```java
+@Temporal(TemporalType.DATE)
+@Column(name = "birth_date")
+private Date birthDate;
+```
+## 
