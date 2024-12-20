@@ -172,4 +172,27 @@ In MySQL, when define a column with the `DATE` type, it **only stores the date p
 @Column(name = "birth_date")
 private Date birthDate;
 ```
+## Conventional Commits
+```php
+<type>(<scope>): <summary>
+<BLANK LINE>
+<body>
+```
+1. type:
+- `feat`: Adding a new feature or functionality.
+- `fix`: Addressing a bug or issue.
+- `docs`: Updating documentation.
+- `style`: Changes that do not affect the code functionality (e.g., formatting).
+- `refactor`: Refactoring code without changing functionality.
+- `test`: Adding or updating tests.
+- `chore`: Other tasks like dependency updates or build scripts.
+- `perf`: Changes that improve performance.
+- `ci`: Changes in the Continuous Integration (CI) pipeline.
+- `build`: Changes related to the build process (e.g., webpack, gulp, npm scripts).
+2. scope: optional.
+3. summary: imperative Sentences.
+## `@Transactional` Annotation
+Place it on methods in the **service layer** where **multiple operations** are combined.
+- If you're not performing other database operations (like checking existence, logging changes, or cascading updates), marking it as `@Transactional` is unnecessary.
+- The `@Transactional` annotation in Spring is used to manage database transactions. It ensures that a sequence of operations on a database is executed in a single unit of work. If any operation in the transaction fails, all other operations within that transaction are rolled back, ensuring data integrity.
 ## 
