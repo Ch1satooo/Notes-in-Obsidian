@@ -166,6 +166,7 @@ Different exception types are not just about naming but about **communicating in
 But, To compare two instances based on **logical equality** (e.g., whether their attributes are equal), you must **override** the `equals` method in the class.
 ## Handle Date Date
 Frontend post **`String` type** date data to backend, then in the backend, we should convert it to `Date` type.
+
 In MySQL, when define a column with the `DATE` type, it **only stores the date portion** (`yyyy-MM-dd`). However, if your application interacts with the database using Java, might encounter a time component being added to the `Date` because of how the Java `java.util.Date` or `java.sql.Date` interacts with MySQL. Use `@Temporal(TemporalType.DATE)` in JPA can solve this: 
 ```java
 @Temporal(TemporalType.DATE)
@@ -178,7 +179,7 @@ private Date birthDate;
 <BLANK LINE>
 <body>
 ```
-1. type:
+1. **type**:
 - `feat`: Adding a new feature or functionality.
 - `fix`: Addressing a bug or issue.
 - `docs`: Updating documentation.
@@ -189,10 +190,90 @@ private Date birthDate;
 - `perf`: Changes that improve performance.
 - `ci`: Changes in the Continuous Integration (CI) pipeline.
 - `build`: Changes related to the build process (e.g., webpack, gulp, npm scripts).
-2. scope: optional.
-3. summary: imperative Sentences.
+2. **scope**: optional.
+3. **summary**: imperative Sentences.
 ## `@Transactional` Annotation
 Place it on methods in the **service layer** where **multiple operations** are combined.
 - If you're not performing other database operations (like checking existence, logging changes, or cascading updates), marking it as `@Transactional` is unnecessary.
 - The `@Transactional` annotation in Spring is used to manage database transactions. It ensures that a sequence of operations on a database is executed in a single unit of work. If any operation in the transaction fails, all other operations within that transaction are rolled back, ensuring data integrity.
-## 
+## About `Stream` and `::` Operator
+Streams in Java were introduced in Java 8 to provide a modern and functional way of processing **data collections**.
+```java
+List<EventDTO> eventDTOList = eventList.stream()
+									   .map(EventConvert::convertEvent)
+									   .toList();
+
+// Equivalent Code Without Stream
+List<EventDTO> eventDTOList = new ArrayList<>();
+for (Event event : eventList) {
+    eventDTOList.add(EventConvert.convertEvent(event));
+}
+```
+More example:
+```java
+List<String> names = list.stream()
+                         .filter(name -> name.startsWith("A"))
+                         .collect(Collectors.toList());
+
+```
+In this statement, cannot rewrite the lambda expression as `String::startsWith("A")`, because method references don’t allow to specify additional arguments directly.
+
+We can use a **non-static method** by `ClassName::MethodName`, this is called **method reference**.
+## Lambda Expressions
+A **lambda expression** is a short block of code which takes in parameters and returns a value. Lambda expressions are similar to methods, but they do not need a name and they can be implemented right in the body of a method.
+
+Lambda expressions can be stored in variables if the variable's type is an interface **which has only one method**.
+There is an interface:
+```java
+public interface Message {
+	void send(String para1, Integer para2)
+}
+```
+Implement it: 
+```java
+public class LambdaExample {
+    public static void main(String[] args) {
+        // Implementing the Message interface using a lambda expression
+        Message message = (para1, para2) -> {
+            System.out.println("Sending message with: " + para1 + " and " + para2);
+        };
+
+        // Using the implementation
+        message.send("Hello", 123);
+    }
+}
+
+```
+## Default/Static Methods in Interface
+Before Java 8, all methods in interfaces were abstract. If wanted to add a new method to an interface, we would have to update all classes that implement the interface. 
+(For example: in Java, `List` is a common interface, and it has lots of implementation classes: `ArrayList`, `LinkedList`, etc. Most abstract methods need to be implemented separately, but there still are some methods need a default implementation which can be used or overwritten directly.)
+
+A **default method** is a method in an interface that has a default implementation. It allows to define behavior in an interface without forcing all implementing classes to provide their own implementation.
+**Example**:
+```java
+public interface List<E> extends Collection<E> {
+
+	boolean isEmpty(); // abstract method
+	
+	default void sort(Comparator<? super E> c) {  
+	    Object[] a = this.toArray();  
+	    Arrays.sort(a, (Comparator) c);  
+	    ListIterator<E> i = this.listIterator();  
+	    for (Object e : a) {  
+	        i.next();  
+	        i.set((E) e);  
+	    }  
+	}
+}
+```
+**Static methods** also can be added in interface directly after Java 8:
+```java
+public interface Comparator<T> {
+	public static <T> Comparator<T> comparingInt(ToIntFunction<? super T> keyExtractor) {  
+    Objects.requireNonNull(keyExtractor);  
+    return (Comparator<T> & Serializable)  
+        (c1, c2) -> Integer.compare(keyExtractor.applyAsInt(c1), keyExtractor.applyAsInt(c2));  
+	}
+}
+```
+This method can be called by: `Comparator.comparingInt()`.
