@@ -176,8 +176,6 @@ private Date birthDate;
 ## Conventional Commits
 ```php
 <type>(<scope>): <summary>
-<BLANK LINE>
-<body>
 ```
 1. **type**:
 - `feat`: Adding a new feature or functionality.
